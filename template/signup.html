@@ -1,0 +1,67 @@
+<div class="containerSignup">
+    <div ng-cloak>
+        <!-- <label class="fullNameLabel">Full Name</label>
+        <input class="fullNameInput" type="text" name="fullName" ng-model="fullName" placeholder="Full Name" required="">
+        
+        <label class="emailLabel">Email</label>
+        <input class="inputBox" type="email" name="email" ng-model="email" placeholder="Email id" required="">
+        
+        <label class="passwordLabel">Password</label>
+        <input class="inputBoxPass" type="password" name="password" ng-model="password" placeholder="Password" required="">
+        
+        <label class="phoneLabel">Phone</label>
+        <input class="phoneInput" type="tel" name="phone" ng-model="phone" placeholder="Phone Number" required="">
+        
+        <input class="signupBtn" type="button" name="signup" ng-click="signup()" value="Signup"> -->
+        
+        <md-content class="md-padding" layout-xs="column" layout="row">
+            <div flex-xs flex-gt-xs="50" layout="column" class="cardImg">
+                <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                    <md-card-title>
+                        <md-card-title-media>
+                            <div class="md-media-lg card-media"></div>
+                        </md-card-title-media>
+                        <md-card-title-text>
+                            <span class="md-headline imgText">ONLINE BOOK SHOPPING</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                </md-card>
+            </div>
+            
+            <div flex-xs flex-gt-xs="50" layout="column" class="loginCard">
+                <form>
+                    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                        <md-card-title>
+                            <a class="loginButton" ng-href="login"> LOGIN </a>
+                            <a class="signupButton" ng-href="signup"> SIGNUP </a>
+                        </md-card-title>
+                        <md-input-container>
+                            <label class="fullNameLabel">Full Name</label>
+                            <input class="fullNameInput" type="text" name="fullName" ng-model="fullName"
+                                placeholder="Full Name" required="">
+                        </md-input-container>
+                        <md-input-container>
+                            <label class="emailLabel">Email</label>
+                            <input class="inputBox" type="email" name="email" ng-model="email" placeholder="Email id"
+                                required="">
+                        </md-input-container>
+                        <md-input-container>
+                            <label class="passwordLabel">Password</label>
+                            <input class="inputBoxPass" type="password" name="password" ng-model="password"
+                                placeholder="Password" required="">
+                        </md-input-container>
+                        <md-input-container>
+                            <label class="phoneLabel">Phone</label>
+                            <input class="phoneInput" type="tel" name="phone" ng-model="phone"
+                                placeholder="Phone Number" required="">
+                        </md-input-container>
+                        <md-input-container>
+                            <input class="signupBtn" type="button" name="signup" ng-click="signup()" value="Signup">
+                        </md-input-container>
+                    </md-card>
+                </form>
+
+            </div>
+        </md-content>
+    </div>
+</div>

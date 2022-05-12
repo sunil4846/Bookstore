@@ -1,0 +1,75 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+<body> -->
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <header class="head">
+        <md-content>
+            <md-toolbar class="md-hue-2">
+                <div flex-xs flex-gt-xs="50" layout="row">
+                    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch >
+                        <md-card-title>
+                            <md-card-title-media>
+                                <div class="md-media-lg book-media"></div>
+                            </md-card-title-media>
+                            <md-card-title-text>
+                                <span class="md-headline bookText">Bookstore</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-input-container>
+                            <input class="search" type="text" name="text" ng-model="text" placeholder="Search" required="">
+                        </md-input-container>
+                        <!-- <md-button> -->
+                            <button class="btnProfile">
+                                <div>
+                                    <span class="material-symbols-outlined personIcon">person</span>
+                                    <label class="profileText">Profile</label>
+                                </div>
+                            </button>
+                            <button class="btnCart">
+                                <div>
+                                    <span class="material-symbols-outlined cartIcon">shopping_cart</span>
+                                    <label class="CartText">Cart</label>
+                                </div>
+                            </button>
+                            <!-- <div>
+                                <span class="material-symbols-outlined personIcon">person</span>
+                                <label class="profileText">Profile</label>
+                            </div> -->
+                        <!-- </md-button> -->
+                    </md-card>
+                </div>
+              </md-toolbar>
+        </md-content>
+    </header>
+    <div class="containerDash" layout="row" layout-xs="column">
+        <div class="rowText">
+            <div><p class="pBookText">Books</p></div>
+            <div>
+                <select>
+                    <option value="sort by Reference">sort by Reference</option>
+                    <option value="something">something</option>
+                </select>
+            </div>
+        </div>
+        <div class="rowMain">
+            <div class="cardBook">
+                <div class="cardBookImg"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div>
+            <p class="copyrightText">Copyright &copy 2022. Bookstore Private Limited. All Rights Reserved</p>
+        </div>
+    </footer>
+<!-- </body>
+</html> -->

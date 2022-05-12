@@ -1,0 +1,63 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to Bookstore</title>
+    <link rel="stylesheet" href="../css/login.css" />
+    
+</head>
+<body> -->
+    <link rel="stylesheet" href="../css/login.css" />
+    <div class="containerLogin">
+        <div ng-cloak>
+            <md-content class="md-padding" layout-xs="column" layout="row">
+                <div flex-xs flex-gt-xs="50" layout="column" class="cardImg">
+                    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch >
+                        <md-card-title>
+                            <md-card-title-media>
+                                <div class="md-media-lg card-media"></div>
+                            </md-card-title-media>
+                            <md-card-title-text>
+                                <span class="md-headline imgText">ONLINE BOOK SHOPPING</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                    </md-card>
+                </div>
+                <div flex-xs flex-gt-xs="50" layout="column" class="loginCard">
+                    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch >
+                        <md-card-title>
+                            <!-- <md-button ></md-button> -->
+                            <a  class="loginButton" ui-sref="login"> LOGIN </a>
+                            <a  class="signupButton"  ui-sref="signup"> SIGNUP </a>
+                            <!-- <md-button> </md-button> -->
+                        </md-card-title>
+                        <md-input-container>
+                            <label class="emailLabel">Email</label>
+                            <input class="inputBox" type="email" name="email" ng-model="email" placeholder="Email id" required="">
+                        </md-input-container>
+                        <md-input-container>
+                            <label class="passwordLabel">Password</label>
+                            <input class="inputBoxPass" type="password" name="password" ng-model="password" placeholder="Password" required="">
+                            <label class="forgotLabel">Forgot Password?</label>
+                        </md-input-container>
+                        <md-input-container>
+                            <input class="loginBtn" type="button" name="login" ng-click="login()" value="Login">
+                        </md-input-container>
+                        <md-input-container class="separator">
+                            <div class="line"></div>
+                            <h3>OR</h3>
+                            <div class="line"></div>
+                        </md-input-container>
+                        <md-input-container>
+                            <input class="fbBtn" type="button" name="fbBtn" ng-model="fbBtn" value="Facebook">
+                            <input class="googleBtn" type="button" name="googleBtn" ng-model="googleBtn" value="Google">
+                        </md-input-container>
+                    </md-card>
+                </div>
+            </md-content>
+        </div>
+    </div>
+<!-- </body>
+</html> -->
