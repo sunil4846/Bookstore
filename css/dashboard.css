@@ -108,9 +108,9 @@
     height: 6vh;
     margin: 0;
     /* top: 0; */
-    bottom: 0;
+    bottom: -75px;
     left: 0;
-    position: absolute;
+    position: relative;
     background-color: #503838;
 }
 
@@ -118,7 +118,7 @@
     color: white;
     left: 175px;
     position: relative;
-    bottom: 5px;
+    top: 5px;
 }
 
 .rowText{
@@ -146,20 +146,80 @@
     box-sizing: border-box;
     overflow: hidden;
     top: 90px;
-    width: 235px;
-    height: 275px;
+    width: 275px;
+    height: 285px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #E2E2E2;
     border-radius: 3px;
     left: 45px;
+    margin-bottom: 25px;
 }
 
 .cardBookImg{
     top: 0px;
-    width: 233px;
+    width: 275px;
     height: 172px;
     /* UI Properties */
     background: #F5F5F5 0% 0% no-repeat padding-box;
     border-radius: 2px 2px 0px 0px;
     position: relative;
+}
+
+.imgBook{
+    top: 14px;
+    position: relative;
+    left: 80px;
+}
+
+.bookName{
+    position: relative;
+    left: 20px;
+    font: normal normal normal 15px/19px Roboto;
+    color: #0A0102;
+}
+
+.authorName{
+    left: 20px;
+    position: relative;
+    font: normal normal normal 10px/13px Roboto;
+    letter-spacing: 0px;
+    color: #878787;
+    margin: 0px;
+    top: -10px;
+}
+
+.rating{
+    position: relative;
+    left: 20px;
+    background: green;
+    border: none;
+    color: white;
+}
+
+.review{
+    position: relative;
+    left: 16px;
+    color: #878787;
+    font-size: 11px;
+}
+
+.rate{
+    position: relative;
+    top: -10px;
+    left: 20px;
+}
+
+.spanRate{
+    position: relative;
+    top: -44px;
+    left: 76px;
+    color: gray;
+    font-size: 11px;
+}
+
+.rowMain{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }

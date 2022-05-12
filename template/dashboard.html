@@ -60,8 +60,16 @@
             </div>
         </div>
         <div class="rowMain">
-            <div class="cardBook">
-                <div class="cardBookImg"></div>
+            <div class="cardBook" ng-repeat="book in books">
+                <div class="cardBookImg">
+                    <img src="/assets/Image 11.png" alt="" class="imgBook">
+                </div>
+                <p class="bookName">{{ book.bookName }}</p>
+                <p class="authorName">by {{ book.author}}</p>
+                <button class="rating">4.3 <span class="material-symbols-outlined" style="font-size: 13px;">star</span></button>
+                <span class="review">(20)</span>
+                <p class="rate">Rs{{ book.discountPrice }}</p>
+                <span class="spanRate">Rs{{ book.price }}</span><hr style="position: relative;top: -60px;width: 38px;left: -44px;">
             </div>
         </div>
     </div>

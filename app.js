@@ -95,8 +95,32 @@ angular.module('app', ['ui.router'])
     }])
 
     // dashboard controller
-    .controller('dashboardCtrl', ['$scope', '$state', function ($scope, $state) {
+    .controller('dashboardCtrl', ['$scope', '$state','$http', function ($scope, $state,$http) {
       console.log("dashboard calling");
-
+      
+      //get all books
+      $scope.books = [
+        $http({ 
+          method: 'GET',
+          url: 'https://new-bookstore-backend.herokuapp.com/bookstore_user/get/book',
+          headers: {
+            'Authorization': localStorage.getItem('token') 
+          },
+          // data: user    
+        }).then(
+          function successCallback(response) {
+            console.log(response); 
+            $scope.books = response.data.result;
+            console.log($scope.books);
+            $scope.message = "get book created successful";
+            // $location.path('/signin');
+          },
+          function errorCallback(response) {
+            console.log("get book not created ", response);
+            $scope.message = response.data.message;
+          }
+        )
+      ];
+      
     }])
   })();
