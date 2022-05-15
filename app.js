@@ -1,5 +1,5 @@
 (function() {
-angular.module('app', ['ui.router'])
+angular.module('app', ['ui.router'])     //,'ngMaterial'
 
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
       // $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
@@ -25,6 +25,13 @@ angular.module('app', ['ui.router'])
           url: "/dashboard",
           templateUrl: "template/dashboard.html",
           controller: "dashboardCtrl"
+        })
+
+        $stateProvider
+        .state('myCart', {
+          url: "/myCart",
+          templateUrl: "template/myCart.html",
+          controller: "myCartCtrl"
         })
 
     }])
@@ -123,4 +130,35 @@ angular.module('app', ['ui.router'])
       ];
       
     }])
+
+    // myCart controller
+    .controller('myCartCtrl', ['$scope', '$state','$http', function ($scope, $state,$http) {
+      console.log("myCart calling");
+      
+      //get myCart
+      //get all books
+      // $scope.myCartItems = [
+      //   $http({ 
+      //     method: 'GET',
+      //     url: 'https://new-bookstore-backend.herokuapp.com/bookstore_user/get_cart_items',
+      //     headers: {
+      //       'Authorization': localStorage.getItem('token') 
+      //     },
+      //     // data: user    
+      //   }).then(
+      //     function successCallback(response) {
+      //       console.log(response); 
+      //       $scope.books = response.data.result;
+      //       console.log($scope.books);
+      //       $scope.message = "get my cart item created successful";
+      //       // $location.path('/signin');
+      //     },
+      //     function errorCallback(response) {
+      //       console.log("get my cart item not created ", response);
+      //       $scope.message = response.data.message;
+      //     }
+      //   )
+      // ];     
+    }])
+
   })();

@@ -1,0 +1,149 @@
+<link rel="stylesheet" href="/css/myCart.css">
+<header class="head">
+    <md-content>
+        <md-toolbar class="md-hue-2">
+            <div flex-xs flex-gt-xs="50" layout="row">
+                <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch >
+                    <md-card-title>
+                        <md-card-title-media>
+                            <div class="md-media-lg book-media"></div>
+                        </md-card-title-media>
+                        <md-card-title-text>
+                            <span class="md-headline bookText">Bookstore</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-input-container>
+                        <input class="search" type="text" name="text" ng-model="text" placeholder="Search" required="">
+                    </md-input-container>
+                    <!-- <md-button> -->
+                        <button class="btnProfile">
+                            <div>
+                                <span class="material-symbols-outlined personIcon">person</span>
+                                <label class="profileText">Profile</label>
+                            </div>
+                        </button>
+                        <a ng-href="#/myCart">
+                            <button class="btnCart">
+                                <div>
+                                    <span class="material-symbols-outlined cartIcon">shopping_cart</span>
+                                    <label class="CartText">Cart</label>
+                                </div>
+                            </button>
+                        </a>
+                        <!-- <div>
+                            <span class="material-symbols-outlined personIcon">person</span>
+                            <label class="profileText">Profile</label>
+                        </div> -->
+                    <!-- </md-button> -->
+                </md-card>
+            </div>
+          </md-toolbar>
+    </md-content>
+</header>
+<div style="position: relative;left: 88px;">
+    <p class="homeText">Home/</p>
+    <span class="myCartText">My Cart</span>
+</div>
+<section>
+    <div class="containerMyCart">
+        <div class="myCartDiv" ng-if="show">
+            <div style="display: flex;flex-direction: row;justify-content: space-between;">
+                <div><p style="color: #0A0102;left: 30px;position: relative;font-family: sans-serif;">My cart(1)</p></div>    
+                <div>
+                    <select class="locationTab">
+                        <option>Use Current Location</option>
+                    </select>
+                </div>
+            </div>
+            <div style="display: flex;flex-direction: row;" >  <!--ng-repeat="myCartItem in myCartItems" -->
+                <div class="myCartBookImg">
+                    <img src="/assets/Image 11.png" alt="" class="imgBook">
+                </div>
+                <div style="position: relative;left: 55px;">
+                    <p style="margin: 0;font-family: sans-serif;font-size: 13px;">Don't Make Me Think</p> 
+                    <p style="color: gray;font-size: 11px;">by Steve Krug</p>
+                    <p>Rs.1500 </p>
+                    <span class="discountMyCart">Rs.2000</span><hr style="position: relative;top: -49px;width: 38px;left: 17px;">
+                </div>
+            </div>
+            <div style="display: flex;flex-direction: row;justify-content: center;">
+                <button style="border-radius: 10px; border: 1px solid #DBDBDB; margin-right: 5px;">-</button>
+                <button style="border: 1px solid #DBDBDB; margin-right: 5px;">1</button>
+                <button style="border-radius: 10px; border: 1px solid #DBDBDB; margin-right: 5px;">+</button>
+                <button style="border: 1px solid #DBDBDB; margin-right: 5px;">Remove</button>
+            </div>
+            <div>
+                <button class="plceOrderBtn">Place Order</button>
+            </div>
+        </div>
+
+        <div class="customerDetailsDiv" ng-if="!show">
+            <div style="display: flex;flex-direction: row;justify-content: space-between;">
+                <div><p style="color: #0A0102;left: 30px;position: relative;font-family: sans-serif;">Customer Details</p></div>    
+                <div>
+                    <button class="addNewAddBtn">Add New Address</button>
+                </div>
+            </div>
+            <div style="display: flex;flex-direction: row;left: 50px;position: relative;top: 15px;">
+                <div style="left: -70px;position: relative;">
+                    <label style="position: relative;top: -25px;left: 72px;font-family: sans-serif;">Full Name</label>
+                    <input type="text" placeholder="Full Name" style="height: 30px;margin-right: 5px;border: 1px solid #DCDCDC;left: -4px; position: relative;">
+                </div>
+                <div style="left: -160px;position: relative;">
+                    <label style="position: relative;top: -25px;left: 100px;font-family: sans-serif;">Phone Number</label>
+                    <input type="tel" placeholder="Phone Number" style="height: 30px;margin-right: 5px;border: 1px solid #DCDCDC;position: relative;
+                    left: -12px;">
+                </div>               
+            </div>
+            <!-- <div> -->
+                <label style="position: relative;top: -28px;left: 55px;font-family: sans-serif;">Address</label>
+                <textarea cols="47" rows="4" placeholder="Address" style="position: relative;top: 48px;left: -8px;border: 1px solid #DCDCDC;"></textarea>
+            <!-- </div> -->
+            <div style="display: flex;flex-direction: row;left: 50px;position: relative;top: 72px;">
+                <div style="left: -70px;position: relative;">
+                    <label style="position: relative;top: -25px;left: 72px;font-family: sans-serif;">City/Town</label>
+                    <input type="text" placeholder="City/Town" style="height: 30px;margin-right: 5px;border: 1px solid #DCDCDC;">
+                </div>
+                <div style="left: -96px;position: relative;">
+                    <label style="position: relative;top: -25px;left: 42px;font-family: sans-serif;">State</label>
+                    <input type="text" placeholder="State" style="height: 30px;margin-right: 5px;border: 1px solid #DCDCDC;">
+                </div>               
+            </div>
+            <p style="position: relative;top: 65px;left: 52px;font-family: sans-serif;">Type</p>
+            <div style="position: relative;top: 55px; display: flex;flex-direction: row;justify-content: space-evenly;">
+                <input type="radio" id="home" name="fav_language" value="Home">
+                <label for="home">Home</label><br>
+                <input type="radio" id="work" name="fav_language" value="Work">
+                <label for="work">Work</label><br>
+                <input type="radio" id="other" name="fav_language" value="Other">
+                <label for="other">Other</label>
+            </div>
+            <div>
+                <button class="continueBtn">Continue</button>
+            </div>
+        </div>
+        <div class="orderSummaryDiv" ng-if="!show">
+            <p style="position: relative;top: 10px;left: 52px;font-family: sans-serif;">Order Summary</p>
+            <div style="display: flex;flex-direction: row;left: 25px;position: relative; top: 10px;" >  <!--ng-repeat="myCartItem in myCartItems" -->
+                <div class="myCartBookImg">
+                    <img src="/assets/Image 11.png" alt="" class="imgBook">
+                </div>
+                <div style="position: relative;left: 55px;">
+                    <p style="margin: 0;font-family: sans-serif;font-size: 13px;">Don't Make Me Think</p> 
+                    <p style="color: gray;font-size: 11px;">by Steve Krug</p>
+                    <p>Rs.1500 </p>
+                    <span class="discountMyCart">Rs.2000</span><hr style="position: relative;top: -49px;width: 38px;left: 17px;">
+                </div>
+            </div>
+            <div>
+                <button class="checkoutBtn">Checkout</button>
+            </div>
+        </div>
+    </div>
+</section>
+    
+<footer class="footer">
+    <div>
+        <p class="copyrightText">Copyright &copy 2022. Bookstore Private Limited. All Rights Reserved</p>
+    </div>
+</footer>

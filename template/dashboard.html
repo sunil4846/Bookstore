@@ -33,12 +33,15 @@
                                     <label class="profileText">Profile</label>
                                 </div>
                             </button>
-                            <button class="btnCart">
-                                <div>
-                                    <span class="material-symbols-outlined cartIcon">shopping_cart</span>
-                                    <label class="CartText">Cart</label>
-                                </div>
-                            </button>
+                            <a ng-href="#/myCart">
+                                <button class="btnCart">
+                                    <div>
+                                        <span class="material-symbols-outlined cartIcon">shopping_cart</span>
+                                        <label class="CartText">Cart</label>
+                                    </div>
+                                </button>
+                            </a>
+                            
                             <!-- <div>
                                 <span class="material-symbols-outlined personIcon">person</span>
                                 <label class="profileText">Profile</label>
@@ -70,6 +73,10 @@
                 <span class="review">(20)</span>
                 <p class="rate">Rs{{ book.discountPrice }}</p>
                 <span class="spanRate">Rs{{ book.price }}</span><hr style="position: relative;top: -60px;width: 38px;left: -44px;">
+                <div style="display: flex;justify-content: space-evenly;flex-direction: row;position: relative;top: -62px;">
+                    <button class="cartBtn">Add to Cart</button>
+                    <button class="wishlistBtn">Wishlist</button>
+                </div>                
             </div>
         </div>
     </div>
