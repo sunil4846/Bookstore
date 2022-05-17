@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="/css/placeOrder.css">
+<header class="head">
+    <md-content>
+        <md-toolbar class="md-hue-2">
+            <div flex-xs flex-gt-xs="50" layout="row">
+                <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch >
+                    <md-card-title>
+                        <md-card-title-media>
+                            <div class="md-media-lg book-media"></div>
+                        </md-card-title-media>
+                        <md-card-title-text>
+                            <span class="md-headline bookText">Bookstore</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-input-container>
+                        <input class="search" type="text" name="text" ng-model="text" placeholder="Search" required="">
+                    </md-input-container>
+                    <button class="btnProfile">
+                        <div>
+                            <span class="material-symbols-outlined personIcon">person</span>
+                            <label class="profileText">Profile</label>
+                        </div>
+                    </button>
+                    <a ng-href="#/myCart">
+                        <button class="btnCart">
+                            <div>
+                                <span class="material-symbols-outlined cartIcon">shopping_cart</span>
+                                <label class="CartText">Cart</label>
+                            </div>
+                        </button>
+                    </a>
+                </md-card>
+            </div>
+          </md-toolbar>
+    </md-content>
+</header>
+<div>
+    <div>
+        <img src="../assets/placeOrder.png" alt="" class="placeOrderImg">
+    </div>
+    <div>
+        <p style="text-align: center;top: 25px;position: relative;font: normal normal normal 18px/22px Lato;letter-spacing: 0px;color: #333232;">hurray!!! your order is confirmed</p>
+        <p style="text-align: center;top: 25px;position: relative;font: normal normal normal 18px/22px Lato;letter-spacing: 0px;color: #333232;">the order id is #123456 save the order id for</p>
+        <p style="text-align: center;top: 25px;position: relative;font: normal normal normal 18px/22px Lato;letter-spacing: 0px;color: #333232;">further communication</p>
+    </div>
+    <div style="background: #FFFFFF 0% 0% no-repeat padding-box;border: 1px solid #DCDCDC;position: relative;
+    top: 20px;">
+        <div class="contactusDiv">
+            <p>Email Us</p>
+            <p>Contact Us</p>
+            <p>Address</p>
+        </div>
+        <div style="display: flex;flex-direction: row;justify-content: space-evenly;position: relative;">
+            <p style="position: relative;left: 52px;">admin@bookstore.com</p>
+            <p style="position: relative;left: 95px;">+91 8163475881</p>
+            <div style="position: relative;left: 60px;">
+                <p>42, 14th Main, 15th Cross, Sector 4 ,opp to BDA</p>
+                <p>complex, near Kumarakom restaurant, HSR Layout,</p>
+                <p>Bangalore 560034</p>
+            </div>
+        </div>
+    </div>
+    <a href="#/dashboard"><button class="continueShopBtn" >Continue Shopping</button></a>
+</div>
+
+<footer class="footer">
+    <div>
+        <p class="copyrightText">Copyright &copy 2022. Bookstore Private Limited. All Rights Reserved</p>
+    </div>
+</footer>

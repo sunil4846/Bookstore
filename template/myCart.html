@@ -44,8 +44,8 @@
     <p class="homeText">Home/</p>
     <span class="myCartText">My Cart</span>
 </div>
-<section>
-    <div class="containerMyCart">
+<!-- <section> -->
+    <!-- <div> -->
         <div class="myCartDiv" ng-if="show">
             <div style="display: flex;flex-direction: row;justify-content: space-between;">
                 <div><p style="color: #0A0102;left: 30px;position: relative;font-family: sans-serif;">My cart(1)</p></div>    
@@ -55,29 +55,29 @@
                     </select>
                 </div>
             </div>
-            <div style="display: flex;flex-direction: row;" >  <!--ng-repeat="myCartItem in myCartItems" -->
+            <div style="display: flex;flex-direction: row;margin-bottom: 10px;" ng-repeat="myCartItem in myCartItems" >
                 <div class="myCartBookImg">
                     <img src="/assets/Image 11.png" alt="" class="imgBook">
                 </div>
                 <div style="position: relative;left: 55px;">
-                    <p style="margin: 0;font-family: sans-serif;font-size: 13px;">Don't Make Me Think</p> 
-                    <p style="color: gray;font-size: 11px;">by Steve Krug</p>
-                    <p>Rs.1500 </p>
-                    <span class="discountMyCart">Rs.2000</span><hr style="position: relative;top: -49px;width: 38px;left: 17px;">
+                    <p style="margin: 0;font-family: sans-serif;font-size: 13px;">{{ myCartItem.product_id.bookName }}</p> 
+                    <p style="color: gray;font-size: 11px;">by {{ myCartItem.product_id.author }}</p>
+                    <p>Rs{{ myCartItem.product_id.discountPrice }}</p>
+                    <span class="discountMyCart">Rs{{ myCartItem.product_id.price }}</span><hr style="position: relative;top: -49px;width: 38px;left: 17px;">
+                    <div style="display: flex;flex-direction: row;justify-content: center;">
+                        <button style="border-radius: 10px; border: 1px solid #DBDBDB; margin-right: 5px;">-</button>
+                        <button style="border: 1px solid #DBDBDB; margin-right: 5px;">1</button>
+                        <button style="border-radius: 10px; border: 1px solid #DBDBDB; margin-right: 5px;">+</button>
+                        <button style="border: 1px solid #DBDBDB; margin-right: 5px;" ng-click="remove(myCartItem)">Remove</button>
+                    </div>
                 </div>
-            </div>
-            <div style="display: flex;flex-direction: row;justify-content: center;">
-                <button style="border-radius: 10px; border: 1px solid #DBDBDB; margin-right: 5px;">-</button>
-                <button style="border: 1px solid #DBDBDB; margin-right: 5px;">1</button>
-                <button style="border-radius: 10px; border: 1px solid #DBDBDB; margin-right: 5px;">+</button>
-                <button style="border: 1px solid #DBDBDB; margin-right: 5px;">Remove</button>
-            </div>
+            </div> 
             <div>
-                <button class="plceOrderBtn">Place Order</button>
+                <button class="plceOrderBtn" ng-click="placeOrder()">Place Order</button>
             </div>
         </div>
 
-        <div class="customerDetailsDiv" ng-if="!show">
+        <div class="customerDetailsDiv" ng-if="showCustomer">
             <div style="display: flex;flex-direction: row;justify-content: space-between;">
                 <div><p style="color: #0A0102;left: 30px;position: relative;font-family: sans-serif;">Customer Details</p></div>    
                 <div>
@@ -87,44 +87,44 @@
             <div style="display: flex;flex-direction: row;left: 50px;position: relative;top: 15px;">
                 <div style="left: -70px;position: relative;">
                     <label style="position: relative;top: -25px;left: 72px;font-family: sans-serif;">Full Name</label>
-                    <input type="text" placeholder="Full Name" style="height: 30px;margin-right: 5px;border: 1px solid #DCDCDC;left: -4px; position: relative;">
+                    <input type="text" ng-model="fullName" placeholder="Full Name" style="height: 30px;margin-right: 5px;border: 1px solid #DCDCDC;left: -4px; position: relative;">
                 </div>
                 <div style="left: -160px;position: relative;">
                     <label style="position: relative;top: -25px;left: 100px;font-family: sans-serif;">Phone Number</label>
-                    <input type="tel" placeholder="Phone Number" style="height: 30px;margin-right: 5px;border: 1px solid #DCDCDC;position: relative;
+                    <input type="tel" ng-model="phone" placeholder="Phone Number" style="height: 30px;margin-right: 5px;border: 1px solid #DCDCDC;position: relative;
                     left: -12px;">
                 </div>               
             </div>
             <!-- <div> -->
                 <label style="position: relative;top: -28px;left: 55px;font-family: sans-serif;">Address</label>
-                <textarea cols="47" rows="4" placeholder="Address" style="position: relative;top: 48px;left: -8px;border: 1px solid #DCDCDC;"></textarea>
+                <textarea cols="47" rows="4" ng-model="fullAddress" placeholder="Address" style="position: relative;top: 48px;left: -8px;border: 1px solid #DCDCDC;"></textarea>
             <!-- </div> -->
             <div style="display: flex;flex-direction: row;left: 50px;position: relative;top: 72px;">
                 <div style="left: -70px;position: relative;">
                     <label style="position: relative;top: -25px;left: 72px;font-family: sans-serif;">City/Town</label>
-                    <input type="text" placeholder="City/Town" style="height: 30px;margin-right: 5px;border: 1px solid #DCDCDC;">
+                    <input type="text" ng-model="city" placeholder="City/Town" style="height: 30px;margin-right: 5px;border: 1px solid #DCDCDC;">
                 </div>
                 <div style="left: -96px;position: relative;">
                     <label style="position: relative;top: -25px;left: 42px;font-family: sans-serif;">State</label>
-                    <input type="text" placeholder="State" style="height: 30px;margin-right: 5px;border: 1px solid #DCDCDC;">
+                    <input type="text" ng-model="state" placeholder="State" style="height: 30px;margin-right: 5px;border: 1px solid #DCDCDC;">
                 </div>               
             </div>
             <p style="position: relative;top: 65px;left: 52px;font-family: sans-serif;">Type</p>
             <div style="position: relative;top: 55px; display: flex;flex-direction: row;justify-content: space-evenly;">
-                <input type="radio" id="home" name="fav_language" value="Home">
+                <input type="radio" ng-model="addressType" id="home" name="fav_language" value="Home">
                 <label for="home">Home</label><br>
-                <input type="radio" id="work" name="fav_language" value="Work">
+                <input type="radio" ng-model="addressType" id="work" name="fav_language" value="Work">
                 <label for="work">Work</label><br>
-                <input type="radio" id="other" name="fav_language" value="Other">
+                <input type="radio" ng-model="addressType" id="other" name="fav_language" value="Other">
                 <label for="other">Other</label>
             </div>
             <div>
-                <button class="continueBtn">Continue</button>
+                <button class="continueBtn" ng-click="continue()">Continue</button>
             </div>
         </div>
-        <div class="orderSummaryDiv" ng-if="!show">
-            <p style="position: relative;top: 10px;left: 52px;font-family: sans-serif;">Order Summary</p>
-            <div style="display: flex;flex-direction: row;left: 25px;position: relative; top: 10px;" >  <!--ng-repeat="myCartItem in myCartItems" -->
+        <div class="orderSummaryDiv" ng-if="showOrder">
+            <p style="position: relative;left: 52px;font-family: sans-serif;">Order Summary</p>
+            <div style="display: flex;flex-direction: row;left: 25px;position: relative;" >  <!--ng-repeat="myCartItem in myCartItems" -->
                 <div class="myCartBookImg">
                     <img src="/assets/Image 11.png" alt="" class="imgBook">
                 </div>
@@ -139,8 +139,8 @@
                 <button class="checkoutBtn">Checkout</button>
             </div>
         </div>
-    </div>
-</section>
+    <!-- </div>
+</section> -->
     
 <footer class="footer">
     <div>

@@ -148,106 +148,38 @@
     border-radius: 1px;
 }
 
-.locationTab{
-    position: relative;
-    top: 19px;
-    height: 32px;
-    left: -28px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #DCDCDC;
-    border-radius: 1px;
-}
-
-/* .myCartBookImg{
-    top: 0px;
-    width: 275px;
-    height: 172px;
-    background: #F5F5F5 0% 0% no-repeat padding-box;
-    border-radius: 2px 2px 0px 0px;
-    position: relative;
-} */
-
-.imgBook{
-    top: 0px;
-    position: relative;
-    left: 30px;
-}
-
-.plceOrderBtn{
-    position: relative;
-    float: right;
-    background-color: #3371B5;
-    border: none;
-    width: 100px;
-    height: 34px;
-    color: white;
-    right: 28px;
-    border-radius: 2px;
-    top: -50px;
-}
-
-.discountMyCart{
-    position: relative;
-    top: -33px;
-    left: 60px;
-    font-size: 11px;
-    color: grey;
-}
-
-.customerDetailsDiv{
+.placeOrderImg{
     position: relative;
     top: 50px;
-    left: 100px;
-    width: 750px;
-    height: 370px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contactusDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background: #FAFAFA 0% 0% no-repeat padding-box;
     border: 1px solid #DCDCDC;
-    border-radius: 1px;
+    /* width: 400px; */
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    /* top: 15px; */
 }
 
-.addNewAddBtn{
-    position: relative;
-    top: 20px;
-    left: -28px;
-    height: 30px;
-    border-color: #A03037;
-    background-color: white;
-    color: #A03037;
-}
 
-.continueBtn{
+.continueShopBtn{
     position: relative;
-    float: right;
+    top: 60px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     background-color: #3371B5;
     border: none;
-    width: 100px;
-    height: 34px;
+    height: 35px;
     color: white;
     right: 28px;
     border-radius: 2px;
-    top: 65px;
-}
-
-.orderSummaryDiv{
-    position: relative;
-    top: 65px;
-    left: 100px;
-    /* width: 750px; */
-    /* height: 250px; */
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #DCDCDC;
-    border-radius: 1px;
-}
-
-.checkoutBtn{
-    position: relative;
-    float: right;
-    background-color: #3371B5;
-    border: none;
-    width: 100px;
-    height: 34px;
-    color: white;
-    right: 28px;
-    border-radius: 2px;
-    top: -50px;
 }

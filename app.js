@@ -34,6 +34,20 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
           controller: "myCartCtrl"
         })
 
+        $stateProvider
+        .state('myWishlist', {
+          url: "/myWishlist",
+          templateUrl: "template/myWishlist.html",
+          controller: "myWishlistCtrl"
+        })
+
+        $stateProvider
+        .state('placeOrder', {
+          url: "/placeOrder",
+          templateUrl: "template/placeOrder.html",
+          controller: "placeOrderCtrl"
+        })
+
     }])
 
     // login controller
@@ -54,7 +68,7 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
         }).then(
           function successCallback(response) {
             console.log("login successful",response);
-            localStorage.setItem('token',response.data.id);
+            localStorage.setItem('token',response.data.result.accessToken);
             $scope.message = "login successful";
             $location.path('/dashboard');
           },
@@ -112,8 +126,7 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
           url: 'https://new-bookstore-backend.herokuapp.com/bookstore_user/get/book',
           headers: {
             'Authorization': localStorage.getItem('token') 
-          },
-          // data: user    
+          }    
         }).then(
           function successCallback(response) {
             console.log(response); 
@@ -128,37 +141,212 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
           }
         )
       ];
+      //calling api to add to cart 
+      $scope.addToCart = function(book){
+        console.log("add to cart",book);
+        $http({ 
+          method: 'POST',
+          url: 'https://new-bookstore-backend.herokuapp.com/bookstore_user/add_cart_item/'+book._id,
+          headers: {
+            'x-access-token': localStorage.getItem('token') 
+          },
+          // data: user    
+        }).then(
+          function successCallback(response) {
+            console.log(response); 
+            $scope.book = response.data.result;
+            console.log($scope.book);
+            $scope.message = "added book to my cart item added successful";
+            // $location.path('/signin');
+          },
+          function errorCallback(response) {
+            console.log("added book to my cart item not added ", response);
+            $scope.message = response.data.message;
+          }
+        )
+      }
+
+      //calling api to add to wishlist
+      $scope.addToWishlist = function(book){
+        console.log("add to cart",book);
+        $http({ 
+          method: 'POST',
+          url: 'https://new-bookstore-backend.herokuapp.com/bookstore_user/add_wish_list/'+book._id,
+          headers: {
+            'x-access-token': localStorage.getItem('token') 
+          },
+          // data: user    
+        }).then(
+          function successCallback(response) {
+            console.log(response); 
+            $scope.book = response.data.result;
+            console.log("added book to wishlist",$scope.book);
+            $scope.message = "added book to wishlist added successful";
+            // $location.path('/signin');
+          },
+          function errorCallback(response) {
+            console.log("added book to wishlist not added ", response);
+            $scope.message = response.data.message;
+          }
+        )
+      }
       
     }])
 
     // myCart controller
     .controller('myCartCtrl', ['$scope', '$state','$http', function ($scope, $state,$http) {
       console.log("myCart calling");
-      
+      $scope.show = true;
       //get myCart
-      //get all books
-      // $scope.myCartItems = [
-      //   $http({ 
-      //     method: 'GET',
-      //     url: 'https://new-bookstore-backend.herokuapp.com/bookstore_user/get_cart_items',
-      //     headers: {
-      //       'Authorization': localStorage.getItem('token') 
-      //     },
-      //     // data: user    
-      //   }).then(
-      //     function successCallback(response) {
-      //       console.log(response); 
-      //       $scope.books = response.data.result;
-      //       console.log($scope.books);
-      //       $scope.message = "get my cart item created successful";
-      //       // $location.path('/signin');
-      //     },
-      //     function errorCallback(response) {
-      //       console.log("get my cart item not created ", response);
-      //       $scope.message = response.data.message;
-      //     }
-      //   )
-      // ];     
+      $scope.myCartItems = [
+        $http({ 
+          method: 'GET',
+          url: 'https://new-bookstore-backend.herokuapp.com/bookstore_user/get_cart_items',
+          headers: {
+            'x-access-token': localStorage.getItem('token') 
+          },
+          // data: user    
+        }).then(
+          function successCallback(response) {
+            console.log(response); 
+            $scope.myCartItems = response.data.result;
+            console.log($scope.myCartItems);
+            $scope.message = "get my cart item created successful";
+            // $location.path('/signin');
+          },
+          function errorCallback(response) {
+            console.log("get my cart item not created ", response);
+            $scope.message = response.data.message;
+          }
+        )
+      ];   
+      
+      // remove cart item
+      $scope.remove = function(myCartItem){
+        console.log("deleting item",myCartItem);
+        $http({ 
+          method: 'DELETE',
+          url: 'https://new-bookstore-backend.herokuapp.com/bookstore_user/remove_cart_item/'+myCartItem._id,
+          headers: {
+            'x-access-token': localStorage.getItem('token') 
+          },
+          // data: user    
+        }).then(
+          function successCallback(response) {
+            console.log(response); 
+            $scope.remove = response.data.result;
+            console.log("deleted book from my cart",$scope.remove);
+            $scope.message = "deleted book from cart successful";
+            // $location.path('/signin');
+          },
+          function errorCallback(response) {
+            console.log("deleted book from cart unsuccessful ", response);
+            $scope.message = response.data.message;
+          }
+        )  
+      }
+
+      $scope.placeOrder = function() {
+        $scope.show = false;
+        $scope.showCustomer = true;
+        console.log("customer details calling");
+        var user = {
+          'fullName': $scope.fullName,
+          'phone': $scope.phone,
+          'fullAddress' : $scope.fullAddress,
+          'city' : $scope.city,
+          'state' : $scope.state
+        }
+        console.log("customer details calling");
+        $http({
+          method: 'PUT',
+          url: 'https://new-bookstore-backend.herokuapp.com/bookstore_user/edit_user',
+          headers: {
+            'x-access-token': localStorage.getItem('token') 
+          },
+          data: user
+
+        }).then(
+          function successCallback(response) {
+            console.log("customer details fetch successful");
+            console.log(response);
+            $scope.continue = response.data.data;
+            console.log($scope.continue);
+            $scope.message = "customer details fetch successful";
+            // $location.path('/dashboard');
+          },
+          function errorCallback(response) {
+            console.log("customer details fetch unsuccessful", response);
+            $scope.message = response.data.message;
+          }
+        );
+
+      }
+
+      $scope.continue = function(){
+        $scope.show = false;
+        
+        $scope.showCustomer = false;
+        $scope.showOrder = true;
+      }
+    }])
+
+    // myWishlist controller
+    .controller('myWishlistCtrl', ['$scope', '$state','$http', function ($scope, $state,$http) {
+      console.log("myWishlist calling");
+      $scope.myWishlistItems = [
+        $http({ 
+          method: 'GET',
+          url: 'https://new-bookstore-backend.herokuapp.com/bookstore_user/get_wishlist_items',
+          headers: {
+            'x-access-token': localStorage.getItem('token') 
+          },
+          // data: user    
+        }).then(
+          function successCallback(response) {
+            console.log(response); 
+            $scope.myWishlistItems = response.data.result;
+            console.log($scope.myWishlistItems);
+            $scope.message = "get my wishlist item created successful";
+            // $location.path('/signin');
+          },
+          function errorCallback(response) {
+            console.log("get my wishlist item not created ", response);
+            $scope.message = response.data.message;
+          }
+        )
+      ]; 
+      
+      $scope.deleteWishlistItem = function(myWishlistItem){
+        console.log("deleting item",myWishlistItem);
+        $http({ 
+          method: 'DELETE',
+          url: 'https://new-bookstore-backend.herokuapp.com/bookstore_user/remove_wishlist_item/'+myWishlistItem._id,
+          headers: {
+            'x-access-token': localStorage.getItem('token') 
+          },
+          // data: user    
+        }).then(
+          function successCallback(response) {
+            console.log(response); 
+            $scope.deleteWishlistItem = response.data.result;
+            console.log("deleted book from wishlist",$scope.deleteWishlistItem);
+            $scope.message = "deleted book from wishlist successful";
+            // $location.path('/signin');
+          },
+          function errorCallback(response) {
+            console.log("deleted book from wishlist unsuccessful ", response);
+            $scope.message = response.data.message;
+          }
+        )  
+      }
+
+    }])
+
+    // place order page controller
+    .controller('placeOrderCtrl', ['$scope', '$state','$http', function ($scope, $state,$http) {
+      console.log("place order calling");
+
     }])
 
   })();

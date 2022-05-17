@@ -129,7 +129,7 @@
     left: 10px;
 }
 
-.myCartText{
+.myWishlistText{
     position: relative;
     left: 55px;
     color: #0A0102;
@@ -137,22 +137,12 @@
     top: 10px;
 }
 
-.myCartDiv{
+.myWishlistDiv{
     position: relative;
     top: 32px;
     left: 100px;
     /* width: 750px; */
     /* height: 251px; */
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #DCDCDC;
-    border-radius: 1px;
-}
-
-.locationTab{
-    position: relative;
-    top: 19px;
-    height: 32px;
-    left: -28px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #DCDCDC;
     border-radius: 1px;
@@ -171,19 +161,8 @@
     top: 0px;
     position: relative;
     left: 30px;
-}
-
-.plceOrderBtn{
-    position: relative;
-    float: right;
-    background-color: #3371B5;
-    border: none;
-    width: 100px;
-    height: 34px;
-    color: white;
-    right: 28px;
-    border-radius: 2px;
-    top: -50px;
+    /* height: 90px; */
+    margin-bottom: 10px;
 }
 
 .discountMyCart{
@@ -192,62 +171,4 @@
     left: 60px;
     font-size: 11px;
     color: grey;
-}
-
-.customerDetailsDiv{
-    position: relative;
-    top: 50px;
-    left: 100px;
-    width: 750px;
-    height: 370px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #DCDCDC;
-    border-radius: 1px;
-}
-
-.addNewAddBtn{
-    position: relative;
-    top: 20px;
-    left: -28px;
-    height: 30px;
-    border-color: #A03037;
-    background-color: white;
-    color: #A03037;
-}
-
-.continueBtn{
-    position: relative;
-    float: right;
-    background-color: #3371B5;
-    border: none;
-    width: 100px;
-    height: 34px;
-    color: white;
-    right: 28px;
-    border-radius: 2px;
-    top: 65px;
-}
-
-.orderSummaryDiv{
-    position: relative;
-    top: 65px;
-    left: 100px;
-    /* width: 750px; */
-    /* height: 250px; */
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #DCDCDC;
-    border-radius: 1px;
-}
-
-.checkoutBtn{
-    position: relative;
-    float: right;
-    background-color: #3371B5;
-    border: none;
-    width: 100px;
-    height: 34px;
-    color: white;
-    right: 28px;
-    border-radius: 2px;
-    top: -50px;
 }
