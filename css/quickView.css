@@ -1,12 +1,16 @@
 body{
-    margin: 0px;
+    margin: 0;
 }
 .head{
+    width: 100%;
     height: 10vh;
     margin: 0;
+    top: 0;
+    left: 0;
     margin-top: 0px;
     margin-left: 0px;
     position: sticky;
+    z-index: 1;
     background-color: #A03037;
 }
 
@@ -74,9 +78,15 @@ body{
     border: none;
 }
 
-.btnCart{
+.aBtnCart{
+    position: relative;
     top: -24px;
     left: 360px;
+}
+
+.btnCart{
+    /* top: -24px;
+    left: 360px; */
     width: 66px;
     height: 10vh;
     position: relative;
@@ -131,7 +141,7 @@ body{
     left: 10px;
 }
 
-.myCartText{
+.book{
     position: relative;
     left: 55px;
     color: #0A0102;
@@ -139,49 +149,13 @@ body{
     top: 10px;
 }
 
-.myCartDiv{
+.myWishlistDiv{
     position: relative;
     top: 32px;
-    left: 100px;
+    /* left: 100px; */
     /* width: 750px; */
     /* height: 251px; */
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #DCDCDC;
     border-radius: 1px;
-}
-
-.placeOrderImg{
-    position: relative;
-    top: 50px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.contactusDiv{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    background: #FAFAFA 0% 0% no-repeat padding-box;
-    border: 1px solid #DCDCDC;
-    /* width: 400px; */
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    /* top: 15px; */
-}
-
-
-.continueShopBtn{
-    position: relative;
-    top: 60px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #3371B5;
-    border: none;
-    height: 35px;
-    color: white;
-    right: 28px;
-    border-radius: 2px;
 }

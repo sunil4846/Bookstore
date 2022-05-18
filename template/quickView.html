@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/myWishlist.css">
+<link rel="stylesheet" href="/css/quickView.css">
 <header class="head">
     <md-content>
         <md-toolbar class="md-hue-2">
@@ -37,29 +37,14 @@
 </header>
 <div style="position: relative;left: 88px;">
     <p class="homeText">Home/</p>
-    <span class="myWishlistText">My Wishlist</span>
+    <span class="book">Book</span>
 </div>
-<div class="containerMyWishlist">
-    <div class="myWishlistDiv">
-        <div style="background: #F5F5F5 0% 0% no-repeat padding-box;border: 1px solid #E4E4E4;border-radius: 1px;">
-            <p style="color: #0A0102;left: 30px;position: relative;font-family: sans-serif;">My Wishlist</p>
-        </div> 
-        <div style="display: flex;flex-direction: row;top: 10px;position: relative;" ng-repeat="myWishlistItem in myWishlistItems" >
-            <div class="myWishlistBookImg">
-                <img src="/assets/Image 11.png" alt="" class="imgBook">
-            </div>
-            <div style="position: relative;left: 55px;">
-                <p style="margin: 0;font-family: sans-serif;font-size: 13px;">{{ myWishlistItem.product_id.bookName }}</p> 
-                <p style="color: gray;font-size: 11px;">by {{ myWishlistItem.product_id.author }}</p>
-                <p>Rs{{ myWishlistItem.product_id.discountPrice }}</p>
-                <span class="discountMyCart">Rs{{ myWishlistItem.product_id.price }}</span>
-                <hr style="position: relative;top: -49px;width: 38px;left: 40px;">
-                <!-- <button> -->
-                    <span class="material-symbols-rounded" ng-click="deleteWishlistItem(myWishlistItem.product_id)">delete</span>
-                <!-- </button>  -->
-            </div>  
-                     
-        </div>
+<div>
+    <div>
+        img
+    </div>
+    <div>
+        text
     </div>
 </div>
 

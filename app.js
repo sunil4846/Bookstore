@@ -48,6 +48,13 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
           controller: "placeOrderCtrl"
         })
 
+        $stateProvider
+        .state('quickView', {
+          url: "/quickView",
+          templateUrl: "template/quickView.html",
+          controller: "quickViewCtrl"
+        })
+
     }])
 
     // login controller
@@ -249,15 +256,20 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
       $scope.placeOrder = function() {
         $scope.show = false;
         $scope.showCustomer = true;
-        console.log("customer details calling");
+        
+      }
+
+      $scope.continue = function(){
+        $scope.show = false; 
+        $scope.showCustomer = false;
+        console.log("customer details calling",$scope.myCartItems);
         var user = {
-          'fullName': $scope.fullName,
-          'phone': $scope.phone,
+          'addressType': $scope.addressType,
           'fullAddress' : $scope.fullAddress,
           'city' : $scope.city,
           'state' : $scope.state
         }
-        console.log("customer details calling");
+        console.log("customer details calling",user);
         $http({
           method: 'PUT',
           url: 'https://new-bookstore-backend.herokuapp.com/bookstore_user/edit_user',
@@ -271,7 +283,7 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
             console.log("customer details fetch successful");
             console.log(response);
             $scope.continue = response.data.data;
-            console.log($scope.continue);
+            console.log($scope.placeOrder);
             $scope.message = "customer details fetch successful";
             // $location.path('/dashboard');
           },
@@ -280,13 +292,6 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
             $scope.message = response.data.message;
           }
         );
-
-      }
-
-      $scope.continue = function(){
-        $scope.show = false;
-        
-        $scope.showCustomer = false;
         $scope.showOrder = true;
       }
     }])
@@ -346,6 +351,12 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
     // place order page controller
     .controller('placeOrderCtrl', ['$scope', '$state','$http', function ($scope, $state,$http) {
       console.log("place order calling");
+
+    }])
+
+    // place order page controller
+    .controller('quickViewCtrl', ['$scope', '$state','$http', function ($scope, $state,$http) {
+      console.log("quick view calling");
 
     }])
 
