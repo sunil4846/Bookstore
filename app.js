@@ -69,7 +69,7 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
         console.log("login calling", user);
         $http({
           method: 'POST',
-          url: 'https://new-bookstore-backend.herokuapp.com/bookstore_user/login',
+          url: 'https://bookstore.incubation.bridgelabz.com/bookstore_user/login',
           data: user
   
         }).then(
@@ -96,13 +96,12 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
           'fullName': $scope.fullName,
           'email': $scope.email,
           'password': $scope.password,
-          'phone': $scope.phone,
-          'service': 'advance'
+          'phone': $scope.phone
         }
         console.log("signup calling", user);
         $http({
           method: 'POST',
-          url: 'https://new-bookstore-backend.herokuapp.com/bookstore_user/registration',
+          url: 'https://bookstore.incubation.bridgelabz.com/bookstore_user/registration',
           data: user
 
         }).then(
@@ -130,7 +129,7 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
       $scope.books = [
         $http({ 
           method: 'GET',
-          url: 'https://new-bookstore-backend.herokuapp.com/bookstore_user/get/book',
+          url: 'https://bookstore.incubation.bridgelabz.com/bookstore_user/get/book',
           headers: {
             'Authorization': localStorage.getItem('token') 
           }    
@@ -153,7 +152,7 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
         console.log("add to cart",book);
         $http({ 
           method: 'POST',
-          url: 'https://new-bookstore-backend.herokuapp.com/bookstore_user/add_cart_item/'+book._id,
+          url: 'https://bookstore.incubation.bridgelabz.com/bookstore_user/add_cart_item/'+book._id,
           headers: {
             'x-access-token': localStorage.getItem('token') 
           },
@@ -178,7 +177,7 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
         console.log("add to cart",book);
         $http({ 
           method: 'POST',
-          url: 'https://new-bookstore-backend.herokuapp.com/bookstore_user/add_wish_list/'+book._id,
+          url: 'https://bookstore.incubation.bridgelabz.com/bookstore_user/add_wish_list/'+book._id,
           headers: {
             'x-access-token': localStorage.getItem('token') 
           },
@@ -208,7 +207,7 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
       $scope.myCartItems = [
         $http({ 
           method: 'GET',
-          url: 'https://new-bookstore-backend.herokuapp.com/bookstore_user/get_cart_items',
+          url: 'https://bookstore.incubation.bridgelabz.com/bookstore_user/get_cart_items',
           headers: {
             'x-access-token': localStorage.getItem('token') 
           },
@@ -233,7 +232,7 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
         console.log("deleting item",myCartItem);
         $http({ 
           method: 'DELETE',
-          url: 'https://new-bookstore-backend.herokuapp.com/bookstore_user/remove_cart_item/'+myCartItem._id,
+          url: 'https://bookstore.incubation.bridgelabz.com/bookstore_user/remove_cart_item/'+myCartItem._id,
           headers: {
             'x-access-token': localStorage.getItem('token') 
           },
@@ -258,21 +257,21 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
         $scope.showCustomer = true;
         
       }
-
+      
       $scope.continue = function(){
         $scope.show = false; 
         $scope.showCustomer = false;
-        console.log("customer details calling",$scope.myCartItems);
+        console.log("customer details calling",$scope.myCartItems.fullAddress);
         var user = {
-          'addressType': $scope.addressType,
-          'fullAddress' : $scope.fullAddress,
-          'city' : $scope.city,
-          'state' : $scope.state
+          'addressType': $scope.myCartItems.addressType,
+          'fullAddress' : $scope.myCartItems.fullAddress,
+          'city' : $scope.myCartItems.city,
+          'state' : $scope.myCartItems.state
         }
         console.log("customer details calling",user);
         $http({
           method: 'PUT',
-          url: 'https://new-bookstore-backend.herokuapp.com/bookstore_user/edit_user',
+          url: 'https://bookstore.incubation.bridgelabz.com/bookstore_user/edit_user',
           headers: {
             'x-access-token': localStorage.getItem('token') 
           },
@@ -294,6 +293,38 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
         );
         $scope.showOrder = true;
       }
+
+      $scope.checkout = function(){
+        console.log('checkout calling')
+        console.log("customer details calling",$scope.myCartItems.product_id);
+        var user = {
+          'product_id': $scope.myCartItems._id,
+          'product_name' : $scope.myCartItems.bookName,
+          'product_quantity' : $scope.myCartItems.quantity,
+          'product_price' : $scope.myCartItems.price
+        }
+        console.log('order details',user);
+        $http({ 
+          method: 'POST',
+          url: 'https://bookstore.incubation.bridgelabz.com/bookstore_user/add/order',
+          headers: {
+            'x-access-token': localStorage.getItem('token') 
+          },
+          data: user    
+        }).then(
+          function successCallback(response) {
+            console.log(response); 
+            $scope.checkout = response.data.result;
+            console.log($scope.checkout);
+            $scope.message = "order placed successful";
+            $location.path('/placeOrder');
+          },
+          function errorCallback(response) {
+            console.log("order not placed ", response);
+            $scope.message = "order not placed";
+          }
+        )  
+      }
     }])
 
     // myWishlist controller
@@ -302,7 +333,7 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
       $scope.myWishlistItems = [
         $http({ 
           method: 'GET',
-          url: 'https://new-bookstore-backend.herokuapp.com/bookstore_user/get_wishlist_items',
+          url: 'https://bookstore.incubation.bridgelabz.com/bookstore_user/get_wishlist_items',
           headers: {
             'x-access-token': localStorage.getItem('token') 
           },
@@ -326,7 +357,7 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
         console.log("deleting item",myWishlistItem);
         $http({ 
           method: 'DELETE',
-          url: 'https://new-bookstore-backend.herokuapp.com/bookstore_user/remove_wishlist_item/'+myWishlistItem._id,
+          url: 'https://bookstore.incubation.bridgelabz.com/bookstore_user/remove_wishlist_item/'+myWishlistItem._id,
           headers: {
             'x-access-token': localStorage.getItem('token') 
           },
