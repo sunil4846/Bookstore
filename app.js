@@ -281,8 +281,8 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
           function successCallback(response) {
             console.log("customer details fetch successful");
             console.log(response);
-            $scope.continue = response.data.data;
-            console.log($scope.placeOrder);
+            $scope.continue = response.data.result;
+            console.log($scope.continue);
             $scope.message = "customer details fetch successful";
             // $location.path('/dashboard');
           },
@@ -294,14 +294,14 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
         $scope.showOrder = true;
       }
 
-      $scope.checkout = function(){
-        console.log('checkout calling')
-        console.log("customer details calling",$scope.myCartItems.product_id);
+      $scope.checkout = function(placeOrder){
+        console.log('checkout calling',placeOrder)
+        console.log("customer details calling",placeOrder._id);
         var user = {
-          'product_id': $scope.myCartItems._id,
-          'product_name' : $scope.myCartItems.bookName,
-          'product_quantity' : $scope.myCartItems.quantity,
-          'product_price' : $scope.myCartItems.price
+          'product_id': placeOrder._id,
+          'product_name' : placeOrder.bookName,
+          'product_quantity' : placeOrder.quantity,
+          'product_price' : placeOrder.price
         }
         console.log('order details',user);
         $http({ 

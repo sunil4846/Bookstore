@@ -125,21 +125,22 @@
             </form>
             
         </div>
-        <div class="orderSummaryDiv" ng-if="showOrder">
+        <div class="orderSummaryDiv" ng-if="showOrder" ng-repeat="placeOrder in myCartItems">
             <p style="position: relative;left: 52px;font-family: sans-serif;">Order Summary</p>
             <div style="display: flex;flex-direction: row;left: 25px;position: relative;" >  <!--ng-repeat="myCartItem in myCartItems" -->
                 <div class="myCartBookImg">
                     <img src="/assets/Image 11.png" alt="" class="imgBook">
                 </div>
                 <div style="position: relative;left: 55px;">
-                    <p style="margin: 0;font-family: sans-serif;font-size: 13px;">{{myCartItems.product_id.bookName}}Don't Make Me Think</p> 
-                    <p style="color: gray;font-size: 11px;">by Steve Krug</p>
-                    <p>Rs.1500 </p>
-                    <span class="discountMyCart">Rs.2000</span><hr style="position: relative;top: -49px;width: 38px;left: 17px;">
+                    <p style="margin: 0;font-family: sans-serif;font-size: 13px;" ng-model="placeOrder.product_id.bookName">{{placeOrder.product_id.bookName}}</p> 
+                    <p style="color: gray;font-size: 11px;" ng-model="placeOrder.product_id.author">by {{placeOrder.product_id.author}}</p>
+                    <p ng-model="placeOrder.product_id.discountPrice">Rs.{{placeOrder.product_id.discountPrice}}</p>
+                    <span class="discountMyCart" ng-model="placeOrder.product_id.price">Rs.{{placeOrder.product_id.price}}</span><hr style="position: relative;top: -49px;width: 38px;left: 17px;">
+                    <p style="color: gray;font-size: 11px;" ng-model="placeOrder.product_id.quantity">({{placeOrder.product_id.quantity}})</p>
                 </div>
             </div>
             <div>
-                <button class="checkoutBtn" ng-click="checkout()">Checkout</button>
+                <button class="checkoutBtn" ng-click="checkout(placeOrder.product_id)">Checkout</button>
             </div>
         </div>
     <!-- </div>
