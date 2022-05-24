@@ -122,7 +122,7 @@ body{
     /* top: 0; */
     bottom: -75px;
     left: 0;
-    position: relative;
+    position: absolute;
     background-color: #503838;
 }
 
@@ -203,4 +203,30 @@ body{
     position: relative;
     top: 21px;
     left: 50px;
+}
+
+.customerFeedDiv{
+    position: relative;
+    width: 50%;
+    float: right;
+    top: -147px;
+}
+
+.overallRatingDiv{
+    background: #F5F5F5 0% 0% no-repeat padding-box;
+    border-radius: 2px;
+    height: 185px;
+}
+
+.submitBtn{
+    position: relative;
+    float: right;
+    background-color: #3371B5;
+    border: none;
+    width: 100px;
+    height: 34px;
+    color: white;
+    right: 7px;
+    border-radius: 2px;
+    top: 8px;
 }

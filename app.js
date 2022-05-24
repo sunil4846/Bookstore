@@ -1,5 +1,5 @@
 (function() {
-angular.module('app', ['ui.router'])     //,'ngMaterial'
+angular.module('app', ['ui.router','angularUtils.directives.dirPagination'])     //,'ngMaterial'
 
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
       // $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
@@ -52,7 +52,7 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
         .state('quickView', {
           url: "/quickView",
           templateUrl: "template/quickView.html",
-          controller: "quickViewCtrl"
+          // controller: "quickViewCtrl"
         })
 
     }])
@@ -122,7 +122,7 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
     }])
 
     // dashboard controller
-    .controller('dashboardCtrl', ['$scope', '$state','$http', function ($scope, $state,$http) {
+    .controller('dashboardCtrl', ['$scope', '$state','$http','$location', function ($scope, $state,$http,$location) {
       console.log("dashboard calling");
       
       //get all books
@@ -147,6 +147,45 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
           }
         )
       ];
+
+      // quickview 
+      $scope.quickView = function(book){
+        // var id = $scope.books;
+        console.log('all book',$scope.books);
+        console.log("calling quick view",book._id);
+        if ($scope.books._id == book._id) {
+          console.log(book._id);
+        }
+
+        // $location.path('/quickView');
+        // var quickBook = {
+        //   'bookName':book.bookName,
+        //   'author':book.author,
+        //   'discountPrice':book.discountPrice,
+        //   'price':book.price
+        // }
+        // console.log('something',quickBook);
+        $http({ 
+          method: 'GET',
+          url: 'https://bookstore.incubation.bridgelabz.com/bookstore_user/get/book',
+          headers: {
+            'x-access-token': localStorage.getItem('token') 
+          },
+          // data: quickBook   
+        }).then(
+          function successCallback(response) {
+            console.log(response); 
+            $scope.quickView = response.data.result;
+            console.log($scope.quickView);
+            $scope.message = "get book created successful";
+            // $location.path('/quickView');
+          },
+          function errorCallback(response) {
+            console.log("get book not created ", response);
+            $scope.message = response.data.message;
+          }
+        )
+      }
       //calling api to add to cart 
       $scope.addToCart = function(book){
         console.log("add to cart",book);
@@ -297,20 +336,24 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
       $scope.checkout = function(placeOrder){
         console.log('checkout calling',placeOrder)
         console.log("customer details calling",placeOrder._id);
+        $scope.orders = []
         var user = {
           'product_id': placeOrder._id,
           'product_name' : placeOrder.bookName,
           'product_quantity' : placeOrder.quantity,
           'product_price' : placeOrder.price
         }
-        console.log('order details',user);
+        $scope.orders.push(user);
+        var bookOrders = $scope.orders;
+        console.log('order details',bookOrders);
         $http({ 
           method: 'POST',
           url: 'https://bookstore.incubation.bridgelabz.com/bookstore_user/add/order',
           headers: {
+            'Content-type' : 'application/json',
             'x-access-token': localStorage.getItem('token') 
           },
-          data: user    
+          data: bookOrders  
         }).then(
           function successCallback(response) {
             console.log(response); 
@@ -388,7 +431,7 @@ angular.module('app', ['ui.router'])     //,'ngMaterial'
     // place order page controller
     .controller('quickViewCtrl', ['$scope', '$state','$http', function ($scope, $state,$http) {
       console.log("quick view calling");
-
+      
     }])
 
   })();
