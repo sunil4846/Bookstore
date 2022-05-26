@@ -122,7 +122,7 @@ angular.module('app', ['ui.router','angularUtils.directives.dirPagination'])    
     }])
 
     // dashboard controller
-    .controller('dashboardCtrl', ['$scope', '$state','$http','$location', function ($scope, $state,$http,$location) {
+    .controller('dashboardCtrl', ['$scope', '$state','$http','$location','orderByFilter', function ($scope, $state,$http,$location,orderBy) {
       console.log("dashboard calling");
       
       //get all books
@@ -147,15 +147,59 @@ angular.module('app', ['ui.router','angularUtils.directives.dirPagination'])    
           }
         )
       ];
+      //sorting of book
+      $scope.updateSelected = function(){
+        console.log(' book to sort');
+        switch($scope.selectedOption){
+          case "lowToHigh" :
+            $scope.lowToHigh('discountPrice');
+            break;
+          case "highToLow" :
+            $scope.highToLow();
+            break;
+          case "newestarrivals" :
+            $scope.newestarrivals();
+            break;
+        }
+      } 
+      // sorting of book low to high
+      // var books = $scope.books;
+      // console.log($scope.books['discountPrice']);
+      // $scope.propertyName = $scope.books.discountPrice;
+      // console.log('price',$scope.propertyName);
+      $scope.reverse = true;
+      // $scope.books = orderBy(books, $scope.propertyName, $scope.reverse);
+      // console.log($scope.books);
+      $scope.lowToHigh = function(propertyName){
+        $scope.$watch("books",true);
+        console.log($scope.books);
+        $scope.reverse = (propertyName !== null && $scope.propertyName === propertyName)
+        ? !$scope.reverse : false;
+        $scope.propertyName = propertyName;
+        $scope.books = orderBy(books, $scope.propertyName, $scope.reverse);
+        console.log('price',$scope.propertyName);
+        // var discountPriceList = $scope.books.discountPrice;
+        // console.log("list",discountPriceList)
+      }
+
+      // sorting of book high to low
+      $scope.highToLow = function(){
+        console.log('price');
+      }
+
+      // sorting of new book 
+      $scope.newestarrivals = function(){
+        console.log('price');
+      }
 
       // quickview 
-      $scope.quickView = function(book){
+      $scope.quickViews = function(book){
         // var id = $scope.books;
-        console.log('all book',$scope.books);
-        console.log("calling quick view",book._id);
-        if ($scope.books._id == book._id) {
-          console.log(book._id);
-        }
+        // console.log('all book',$scope.books._id);
+        console.log("calling quick view",book);
+        // if ($scope.books._id == book._id) {
+        //   console.log(book._id);
+        // }
 
         // $location.path('/quickView');
         // var quickBook = {
@@ -178,7 +222,7 @@ angular.module('app', ['ui.router','angularUtils.directives.dirPagination'])    
             $scope.quickView = response.data.result;
             console.log($scope.quickView);
             $scope.message = "get book created successful";
-            // $location.path('/quickView');
+            $location.path('/quickView');
           },
           function errorCallback(response) {
             console.log("get book not created ", response);

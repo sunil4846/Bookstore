@@ -248,3 +248,82 @@
     top: 60px;
     position: relative;
 }
+
+@media only screen and (min-device-width: 300px) and (max-device-width: 851px) and (-webkit-min-device-pixel-ratio: 1){
+    .search{
+        display: none;
+    }
+
+    .pBookText{
+        font-size: x-large;
+        left: 30px;
+        margin: 0;
+        top: 7px;
+    }
+
+    .book-media{
+        left: 20px;
+    }
+
+    .bookText{
+        left: 65px;
+    }
+
+    .btnProfile{
+        top: -33px;
+        left: 162px;
+        width: 60px;
+        height: 10vh;
+        position: relative;
+    }
+
+    .personIcon{
+        top: 5px;
+        left: 0px;
+        width: 15px;
+        height: 15px;
+        color: white;
+        opacity: 1;
+        position: relative;
+    }
+
+    .profileText{
+        top: 0px;
+        font-size: 12px;
+        left: 4px;
+    }
+
+    .btnCart{
+        left: 160px;
+        width: 60px;
+    }
+
+    .pagination{
+        display: flex;
+        padding-left: 2px;
+    }
+
+    .cardBook{
+        width: 240px;
+        height: 315px;
+        left: 0px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;        
+    }
+
+    .imgBook{
+        left: 60px;
+    }
+
+    .cSelect{
+        position: relative;
+        width: 50%;
+        left: -15px;
+    }
+
+    .copyrightText{
+        font-size: x-small;
+        left: -1px;
+    }
+}

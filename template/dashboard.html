@@ -44,15 +44,17 @@
     <div class="containerDash" layout="row" layout-xs="column">
         <div class="rowText">
             <div><p class="pBookText">Books</p></div>
-            <div>
-                <select>
+            <div class="cSelect">
+                <select ng-model="selectedOption" ng-change="updateSelected()">
                     <option value="sort by Reference">sort by Reference</option>
-                    <option value="something">something</option>
+                    <option value="lowToHigh">Low to High</option>
+                    <option value="highToLow">High to Low</option>
+                    <option value="newestarrivals">Newest Arrivals</option>
                 </select>
             </div>
         </div>
         <div class="rowMain">
-            <div class="cardBook" dir-paginate="book in books|itemsPerPage:5|filter:search" ng-click="quickView(book)">
+            <div class="cardBook" ng-click="quickViews(book)" dir-paginate="book in books|itemsPerPage:5|filter:search|orderBy:'discountPrice':false" >
                 <div class="cardBookImg">
                     <img src="/assets/Image 11.png" alt="" class="imgBook">
                 </div>

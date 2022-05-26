@@ -40,31 +40,32 @@
           </md-toolbar>
     </md-content>
 </header>
-<div style="position: relative;left: 88px;">
-    <p class="homeText">Home/</p>
+<div style="position: relative;">
+    <!-- <p class="homeText">Home/</p> -->
+    <a ng-href="#/dashboard"><p class="homeText">Home/</p></a>
     <span class="myCartText">My Cart</span>
 </div>
 <!-- <section> -->
     <!-- <div> -->
         <div class="myCartDiv" ng-if="show">
             <div style="display: flex;flex-direction: row;justify-content: space-between;">
-                <div><p style="color: #0A0102;left: 30px;position: relative;font-family: sans-serif;">My cart(1)</p></div>    
+                <div><p class="myCart-text1">My cart(1)</p></div>    
                 <div>
                     <select class="locationTab">
                         <option>Use Current Location</option>
                     </select>
                 </div>
             </div>
-            <div style="display: flex;flex-direction: row;margin-bottom: 10px;" ng-repeat="myCartItem in myCartItems" >
+            <div class="flexMycart" ng-repeat="myCartItem in myCartItems" >
                 <div class="myCartBookImg">
                     <img src="/assets/Image 11.png" alt="" class="imgBook">
                 </div>
-                <div style="position: relative;left: 55px;">
-                    <p style="margin: 0;font-family: sans-serif;font-size: 13px;">{{ myCartItem.product_id.bookName }}</p> 
-                    <p style="color: gray;font-size: 11px;">by {{ myCartItem.product_id.author }}</p>
-                    <p>Rs{{ myCartItem.product_id.discountPrice }}</p>
+                <div class="bookDetailDiv">
+                    <p class="bookName">{{ myCartItem.product_id.bookName }}</p> 
+                    <p class="author">by {{ myCartItem.product_id.author }}</p>
+                    <p class="discountPrice">Rs{{ myCartItem.product_id.discountPrice }}</p>
                     <span class="discountMyCart">Rs{{ myCartItem.product_id.price }}</span><hr style="position: relative;top: -49px;width: 38px;left: 17px;">
-                    <div style="display: flex;flex-direction: row;justify-content: center;">
+                    <div class="plusMinusBtn">
                         <button style="border-radius: 10px; border: 1px solid #DBDBDB; margin-right: 5px;">-</button>
                         <button style="border: 1px solid #DBDBDB; margin-right: 5px;">1</button>
                         <button style="border-radius: 10px; border: 1px solid #DBDBDB; margin-right: 5px;">+</button>
