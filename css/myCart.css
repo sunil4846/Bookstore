@@ -213,7 +213,7 @@
     color: white;
     right: 28px;
     border-radius: 2px;
-    top: -50px;
+    top: -46px;
 }
 
 .discountMyCart{
@@ -233,6 +233,106 @@
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #DCDCDC;
     border-radius: 1px;
+}
+
+.customerText{
+    color: #0A0102;
+    left: 30px;
+    position: relative;
+    font-family: sans-serif;
+}
+
+.updateDetailDiv{
+    display: flex;
+    flex-direction: row;
+    left: 50px;
+    position: relative;
+    top: 15px;
+}
+
+.updateNameDiv{
+    left: -70px;
+    position: relative;
+}
+
+.updateInputName{
+    height: 30px;
+    margin-right: 5px;
+    border: 1px solid #DCDCDC;
+    left: -4px; 
+    position: relative;
+}
+
+.updatePhoneDiv{
+    left: -160px;
+    position: relative;
+}
+
+.updateLabelPhone{
+    position: relative;
+    top: -25px;
+    left: 100px;
+    font-family: sans-serif;
+}
+
+.updateInputPhone{
+    height: 30px;
+    margin-right: 5px;
+    border: 1px solid #DCDCDC;
+    position: relative;
+    left: -12px;
+}
+
+.updateLabelAddress{
+    position: relative;
+    top: -28px;
+    left: 55px;
+    font-family: sans-serif;
+}
+
+.updateTextarea{
+    position: relative;
+    top: 48px;
+    left: -8px;
+    border: 1px solid #DCDCDC;
+}
+
+.updateCityStateDiv{
+    display: flex;
+    flex-direction: row;
+    left: 50px;
+    position: relative;
+    top: 72px;
+}
+
+.updateCityDiv{
+    left: -70px;
+    position: relative;
+}
+
+.updateCityLabel{
+    position: relative;
+    top: -25px;
+    left: 72px;
+    font-family: sans-serif;
+}
+
+.updateCityInput{
+    height: 30px;
+    margin-right: 5px;
+    border: 1px solid #DCDCDC;
+}
+
+.updateStateDiv{
+    left: -96px;
+    position: relative;
+}
+
+.updateStateLabel{
+    position: relative;
+    top: -25px;
+    left: 42px;
+    font-family: sans-serif;
 }
 
 .addNewAddBtn{
@@ -400,6 +500,109 @@
     .plusMinusBtn{
         position: relative;
         top: -64px;
+    }
+
+    .customerDetailsDiv{
+        position: relative;
+        left: 0;
+        width: 92%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        height: 452px;
+    }
+
+    .addNewAddBtn{
+        position: relative;
+        top: 5px;
+        left: -10px;
+        height: 25px;
+    }
+
+    .updateDetailDiv {
+        display: flex;
+        flex-direction: column;
+        left: 0px;
+        align-items: center;
+        position: relative;
+    }    
+
+    .updateNameDiv{
+        top: 10px;
+    }
+
+    .updateInputName{
+        margin-right: 0px;
+        left: 0px;
+    }
+
+    .updatePhoneDiv{
+        left: 0px;
+        top: 12px;
+    }
+
+    .updateLabelPhone{
+        position: relative;
+        top: 0px;
+        left: 14px;
+    }
+
+    .updateInputPhone{
+        left: 14px;
+    }
+
+    .updateLabelAddress{
+        position: relative;
+        top: 32px;
+        left: 14px;
+    }
+
+    .updateTextarea{
+        position: relative;
+        top: 35px;
+        left: 0px;
+        width: 90%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .updateCityStateDiv{
+        display: flex;
+        flex-direction: column;
+        left: 0;
+    }
+
+    .updateCityDiv{
+        left: 0px;
+        top: -10px;
+    }
+
+    .updateCityLabel{
+        position: relative;
+        top: -25px;
+        left: 14px;
+    }
+
+    .updateCityInput{
+        top: 5px;
+        left: -55px;
+        height: 30px;
+        position: relative;
+    }
+
+    .updateStateDiv{
+        top: 20px;
+        left: -50px;
+        position: relative;
+    }
+
+    .updateStateLabel{
+        left: 14px;
+    }
+
+    .customerText{
+        left: 10px;
     }
 
     .cSelect{

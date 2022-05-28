@@ -67,8 +67,8 @@
                     <span class="discountMyCart">Rs{{ myCartItem.product_id.price }}</span><hr style="position: relative;top: -49px;width: 38px;left: 17px;">
                     <div class="plusMinusBtn">
                         <button style="border-radius: 10px; border: 1px solid #DBDBDB; margin-right: 5px;">-</button>
-                        <button style="border: 1px solid #DBDBDB; margin-right: 5px;">1</button>
-                        <button style="border-radius: 10px; border: 1px solid #DBDBDB; margin-right: 5px;">+</button>
+                        <button style="border: 1px solid #DBDBDB; margin-right: 5px;">{{myCartItem.quantityToBuy}}</button>
+                        <button style="border-radius: 10px; border: 1px solid #DBDBDB; margin-right: 5px;" ng-model="myCartItems.quantityToBuy" ng-click="addQuantity(myCartItem)">+</button>
                         <button style="border: 1px solid #DBDBDB; margin-right: 5px;" ng-click="remove(myCartItem)">Remove</button>
                     </div>
                 </div>
@@ -80,34 +80,33 @@
 
         <div class="customerDetailsDiv" ng-if="showCustomer">
             <div style="display: flex;flex-direction: row;justify-content: space-between;">
-                <div><p style="color: #0A0102;left: 30px;position: relative;font-family: sans-serif;">Customer Details</p></div>    
+                <div><p class="customerText">Customer Details</p></div>    
                 <div>
                     <button class="addNewAddBtn">Add New Address</button>
                 </div>
             </div>
             <form>
-                <div style="display: flex;flex-direction: row;left: 50px;position: relative;top: 15px;">
-                    <div style="left: -70px;position: relative;">
+                <div class="updateDetailDiv">
+                    <div class="updateNameDiv">
                         <label style="position: relative;top: -25px;left: 72px;font-family: sans-serif;">Full Name</label>
-                        <input type="text" ng-model="myCartItems.fullName" placeholder="Full Name" style="height: 30px;margin-right: 5px;border: 1px solid #DCDCDC;left: -4px; position: relative;">
+                        <input type="text" ng-model="myCartItems.fullName" placeholder="Full Name" class="updateInputName">
                     </div>
-                    <div style="left: -160px;position: relative;">
-                        <label style="position: relative;top: -25px;left: 100px;font-family: sans-serif;">Phone Number</label>
-                        <input type="tel" ng-model="myCartItems.phone" placeholder="Phone Number" style="height: 30px;margin-right: 5px;border: 1px solid #DCDCDC;position: relative;
-                        left: -12px;">
+                    <div class="updatePhoneDiv">
+                        <label class="updateLabelPhone">Phone Number</label>
+                        <input type="tel" ng-model="myCartItems.phone" placeholder="Phone Number" class="updateInputPhone">
                     </div>               
                 </div>
                 <!-- <div> -->
-                    <label style="position: relative;top: -28px;left: 55px;font-family: sans-serif;">Address</label>
-                    <textarea cols="47" rows="4" ng-model="myCartItems.fullAddress" placeholder="Address" style="position: relative;top: 48px;left: -8px;border: 1px solid #DCDCDC;"></textarea>
+                    <label class="updateLabelAddress">Address</label>
+                    <textarea cols="47" rows="4" ng-model="myCartItems.fullAddress" class="updateTextarea" placeholder="Address"></textarea>
                 <!-- </div> -->
-                <div style="display: flex;flex-direction: row;left: 50px;position: relative;top: 72px;">
-                    <div style="left: -70px;position: relative;">
-                        <label style="position: relative;top: -25px;left: 72px;font-family: sans-serif;">City/Town</label>
-                        <input type="text" ng-model="myCartItems.city" placeholder="City/Town" style="height: 30px;margin-right: 5px;border: 1px solid #DCDCDC;">
+                <div class="updateCityStateDiv">
+                    <div class="updateCityDiv">
+                        <label class="updateCityLabel">City/Town</label>
+                        <input type="text" ng-model="myCartItems.city" class="updateCityInput" placeholder="City/Town">
                     </div>
-                    <div style="left: -96px;position: relative;">
-                        <label style="position: relative;top: -25px;left: 42px;font-family: sans-serif;">State</label>
+                    <div class="updateStateDiv">
+                        <label class="updateStateLabel">State</label>
                         <input type="text" ng-model="myCartItems.state" placeholder="State" style="height: 30px;margin-right: 5px;border: 1px solid #DCDCDC;">
                     </div>               
                 </div>

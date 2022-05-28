@@ -122,7 +122,7 @@ angular.module('app', ['ui.router','angularUtils.directives.dirPagination'])    
     }])
 
     // dashboard controller
-    .controller('dashboardCtrl', ['$scope', '$state','$http','$location','orderByFilter', function ($scope, $state,$http,$location,orderBy) {
+    .controller('dashboardCtrl', ['$scope', '$state','$http','$location','$filter', function ($scope, $state,$http,$location,$filter) {
       console.log("dashboard calling");
       
       //get all books
@@ -152,7 +152,7 @@ angular.module('app', ['ui.router','angularUtils.directives.dirPagination'])    
         console.log(' book to sort');
         switch($scope.selectedOption){
           case "lowToHigh" :
-            $scope.lowToHigh('discountPrice');
+            $scope.lowToHigh();
             break;
           case "highToLow" :
             $scope.highToLow();
@@ -163,23 +163,19 @@ angular.module('app', ['ui.router','angularUtils.directives.dirPagination'])    
         }
       } 
       // sorting of book low to high
-      // var books = $scope.books;
-      // console.log($scope.books['discountPrice']);
-      // $scope.propertyName = $scope.books.discountPrice;
-      // console.log('price',$scope.propertyName);
-      $scope.reverse = true;
-      // $scope.books = orderBy(books, $scope.propertyName, $scope.reverse);
-      // console.log($scope.books);
-      $scope.lowToHigh = function(propertyName){
-        $scope.$watch("books",true);
+      $scope.lowToHigh = function(){
+        $scope.reverse = false;
         console.log($scope.books);
-        $scope.reverse = (propertyName !== null && $scope.propertyName === propertyName)
-        ? !$scope.reverse : false;
-        $scope.propertyName = propertyName;
-        $scope.books = orderBy(books, $scope.propertyName, $scope.reverse);
-        console.log('price',$scope.propertyName);
-        // var discountPriceList = $scope.books.discountPrice;
-        // console.log("list",discountPriceList)
+        for(let i = 0 ;i <= $scope.books.length; i++){
+          $scope.booksList = $scope.books[i].discountPrice;
+          console.log('list of discountPrice',$scope.booksList);
+        }
+        // $scope.test = $scope.booksList.sort(function(a, b) {
+        //   return a.discountPrice - b.discountPrice;
+        // });
+        console.log('list of discountPrice',$scope.booksList);
+        $scope.test = $filter('orderBy')($scope.booksList, 'discountPrice', $scope.reverse);
+        console.log($scope.test);        
       }
 
       // sorting of book high to low
@@ -308,7 +304,38 @@ angular.module('app', ['ui.router','angularUtils.directives.dirPagination'])    
             $scope.message = response.data.message;
           }
         )
-      ];   
+      ];  
+      
+      // quantity adding
+      $scope.addQuantity = function(myCartItem){
+        console.log("adding quantity of book calling",myCartItem);
+        var user = {
+          'quantityToBuy': myCartItem.quantityToBuy,
+        }
+        console.log("quantity updating",user);
+        $http({
+          method: 'PUT',
+          url: 'https://bookstore.incubation.bridgelabz.com/bookstore_user/cart_item_quantity/'+myCartItem._id,
+          headers: {
+            'x-access-token': localStorage.getItem('token') 
+          },
+          data: user
+
+        }).then(
+          function successCallback(response) {
+            console.log("quantity added successful");
+            console.log(response);
+            $scope.addQuantity = response.data;
+            console.log($scope.addQuantity);
+            $scope.message = "quantity updated successful";
+            // $location.path('/dashboard');
+          },
+          function errorCallback(response) {
+            console.log("quantity updated unsuccessful", response);
+            $scope.message = response.data.message;
+          }
+        );
+      }
       
       // remove cart item
       $scope.remove = function(myCartItem){
