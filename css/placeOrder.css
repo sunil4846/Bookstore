@@ -119,9 +119,10 @@ body{
 
 .copyrightText{
     color: white;
-    left: 175px;
+    /* left: 175px; */
     position: relative;
     top: 5px;
+    text-align: center;
 }
 
 .homeText{

@@ -49,13 +49,13 @@
             <button class="wishlistBtn" ng-click="addToWishlist(book)">Wishlist</button>
         </div>
     </div>   
-    <div class="bookDetailsQuick" ng-repeat="quickView in quickViews">
-        <p class="bookName">{{ quickView.product_id.bookName }}</p>
-        <p class="authorName">by {{ quickView.product_id.author }}</p>
+    <div class="bookDetailsQuick" ng-repeat="quickView in variableBook">
+        <p class="bookName">{{ quickView.bookName }}</p>
+        <p class="authorName">by {{ quickView.author }}</p>
         <button class="rating">4.3 <span class="material-symbols-outlined" style="font-size: 13px;">star</span></button>
         <span class="review">(20)</span>
-        <p class="rate">Rs{{ quickView.product_id.discountPrice }}</p>
-        <span class="spanRate">Rs{{ quickView.product_id.price }}</span><hr style="position: relative;top: -60px;width: 38px;left: -44px;">
+        <p class="rate">Rs{{ quickView.discountPrice }}</p>
+        <span class="spanRate">Rs{{ quickView.price }}</span><hr style="position: relative;top: -60px;width: 38px;left: -44px;">
     </div>
 </div>
 <div class="customerFeedDiv">

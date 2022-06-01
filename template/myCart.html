@@ -107,11 +107,11 @@
                     </div>
                     <div class="updateStateDiv">
                         <label class="updateStateLabel">State</label>
-                        <input type="text" ng-model="myCartItems.state" placeholder="State" style="height: 30px;margin-right: 5px;border: 1px solid #DCDCDC;">
+                        <input type="text" class="updateStateInput" ng-model="myCartItems.state" placeholder="State" style="height: 30px;margin-right: 5px;border: 1px solid #DCDCDC;">
                     </div>               
                 </div>
-                <p style="position: relative;top: 65px;left: 52px;font-family: sans-serif;">Type</p>
-                <div style="position: relative;top: 55px; display: flex;flex-direction: row;justify-content: space-evenly;">
+                <p class="textType">Type</p>
+                <div class="uAddTypeRadio">
                     <input type="radio" ng-model="myCartItems.addressType"  id="home" name="fav_language" value="Home">
                     <label for="home">Home</label><br>
                     <input type="radio" ng-model="myCartItems.addressType" id="work" name="fav_language" value="Work">

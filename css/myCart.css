@@ -335,6 +335,21 @@
     font-family: sans-serif;
 }
 
+.textType{
+    position: relative;
+    top: 65px;
+    left: 52px;
+    font-family: sans-serif;
+}
+
+.uAddTypeRadio{
+    position: relative;
+    top: 55px; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
 .addNewAddBtn{
     position: relative;
     top: 20px;
@@ -494,7 +509,7 @@
     .discountMyCart{
         position: relative;
         top: -31px;
-        left: 160px;
+        /* left: 160px; */
     }
 
     .plusMinusBtn{
@@ -509,7 +524,7 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
-        height: 452px;
+        height: 90vh;
     }
 
     .addNewAddBtn{
@@ -593,7 +608,7 @@
 
     .updateStateDiv{
         top: 20px;
-        left: -50px;
+        left: 0px;
         position: relative;
     }
 
@@ -601,14 +616,44 @@
         left: 14px;
     }
 
+    .updateStateInput{
+        position: relative;
+        left: -22px;
+        top: 5px;
+    }
+
+    .textType{
+        position: relative;
+        top: 100px;
+        left: 14px;
+        font-weight: bold;
+        font-family: sans-serif;
+    }
+
+    .uAddTypeRadio{
+        position: relative;
+        top: 93px;
+    }
+
+    .continueBtn{
+        position: relative;
+        top: 95px;
+        left: -11px;
+    }
+
     .customerText{
         left: 10px;
+        padding: 5px;
     }
 
     .cSelect{
         position: relative;
         width: 50%;
         left: -15px;
+    }
+
+    .orderSummaryDiv{
+        left: 0;
     }
 
     .copyrightText{

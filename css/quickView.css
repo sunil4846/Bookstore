@@ -50,8 +50,8 @@ body{
 }
 
 .personIcon{
-    top: -4px;
-    left: 16px;
+    top: 6px;
+    /* left: 16px; */
     width: 15px;
     height: 15px;
     color: white;
@@ -60,16 +60,16 @@ body{
 }
 
 .profileText{
-    top: 11px;
+    /* top: 11px; */
     font-size: 12px;
-    left: -5px;
+    left: 6px;
     color: white;
     opacity: 1;
     position: relative;
 }
 
 .btnProfile{
-    top: -24px;
+    top: -34px;
     left: 350px;
     width: 66px;
     height: 10vh;
